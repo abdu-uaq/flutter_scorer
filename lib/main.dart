@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -75,42 +81,51 @@ class _MyHomePageState extends State<MyHomePage> {
           Column(
             children: <Widget>[
               Expanded(
-                  child: Card(
-                    clipBehavior: Clip.antiAlias,
-                    margin: EdgeInsets.all(32.0),
-                    color: Colors.red,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                color: Colors.yellowAccent,
-                                height: 50,
-                                child: SizedBox.expand(
-                                  child: Center(
-                                      child: Text(
-                                          "team wee lezzer"
-                                      )
-                                  ) ,
+                  child: InkWell(
+                    onTap: () {
+                      _incrementCounter();
+                    },
+                    onLongPress: () {
+                      _resetCounter();
+                    },
+                    child: Card(
+                      clipBehavior: Clip.antiAlias,
+                      margin: EdgeInsets.all(32.0),
+                      color: Colors.red,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Expanded(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              color: Colors.redAccent,
+                              height: 50,
+                              child: SizedBox.expand(
+                                child: Center(
+                                    child: Text(
+                                        "team wee lezzer"
+                                    )
+                                ) ,
+                              ),
+                            ),
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                    _counter.toString()
                                 ),
                               ),
-                              Expanded(
-                                child: Center(
-                                  child: Text(
-                                      _counter.toString()
-                                  ),
-                                ),
-                              )
-                            ],
-                          )
+                            )
+                          ],
                         )
-                      ],
-                    ),
-                  )
+                    )
+                  ],
+                ),
+              ),
+          )
+
               ),
               Expanded(
                   child: Card(
